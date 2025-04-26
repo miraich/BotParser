@@ -51,6 +51,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Setup SSH known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" >> ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/*
+          ssh-keyscan 89.232.177.88
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v3
         with:
