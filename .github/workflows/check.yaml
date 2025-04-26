@@ -49,6 +49,8 @@ jobs:
     needs: build_and_push
     runs-on: ubuntu-22.04
     steps:
+      - name: Copy key
+        run: echo ${{secrets.SSH_PRIVATE_KEY}} > ~/.ssh/
       - name: Checkout
         uses: actions/checkout@v4
       - name: Run Install Ansible
