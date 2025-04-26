@@ -50,7 +50,10 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Copy key
-        run: echo ${{secrets.SSH_PRIVATE_KEY}} > ~/.ssh/
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
       - name: Checkout
         uses: actions/checkout@v4
       - name: Run Install Ansible
