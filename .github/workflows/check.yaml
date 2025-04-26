@@ -12,7 +12,8 @@ jobs:
           java-version: '23'
           distribution: 'oracle'
       - name: Run Maven Checkstyle
-        run: mvn checkstyle:check
+#        run: mvn checkstyle:check
+        run: mvn pmd:check
   test:
     needs: style
     runs-on: ubuntu-22.04
