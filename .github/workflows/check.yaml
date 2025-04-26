@@ -54,6 +54,7 @@ jobs:
       - name: Run playbook
         uses: dawidd6/action-ansible-playbook@v3
         with:
+          directory: ./
           playbook: 'playbook.yaml'
           inventory: '.ansible_inventory'
           key: ${{secrets.SSH_PRIVATE_KEY}}
