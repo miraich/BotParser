@@ -35,3 +35,4 @@ build/
 # Project exclude paths
 /out/
 /src/main/resources/application.properties
+

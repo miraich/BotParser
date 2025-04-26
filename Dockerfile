@@ -6,7 +6,7 @@ ENV MAVEN_HOME /opt/maven
 ENV PATH $MAVEN_HOME/bin:$PATH
 COPY . /build
 WORKDIR /build
-RUN mvn clean package -Dmaven.test.skip=true
+RUN mvn clean package
 
 FROM openjdk:23-jdk
 WORKDIR /app

@@ -1,20 +1,23 @@
 - name: Deploy db
   hosts: "prod"
-  remote_user: "andrey"
+  remote_user: "user1"
+  become: yes
   tasks:
-    - name: deploy
-      become: yes
+    - name: Install Docker
+      ansible.builtin.apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+      when: ansible_os_family == 'Debian'
+    #    - name: Install Docker Compose
+    #      ansible.builtin.shell: |
+    #        curl -L "https://github.com/docker/compose/releases/download/v2.23.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    #        chmod +x /usr/local/bin/docker-compose
+    #        args:
+    #          executable: /bin/bash
+    #        when: ansible_os_family == 'Debian'
+    - name: Deploy app
       docker_container:
-        name: database
-        image: postgres
-        restart_policy: always
-        env:
-          POSTGRES_DB: bot_db
-          POSTGRES_USER: admin
-          POSTGRES_PASSWORD: admin
-        healthcheck:
-          test: [ "CMD", "pg_isready", "-U", "admin", "-d", "bot_db" ]
-          interval: 5s
-          timeout: 5s
-          retries: 5
+        name: backend
+        image: atread/workflow_testing
 
