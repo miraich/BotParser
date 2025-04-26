@@ -9,8 +9,10 @@
         state: present
         update_cache: yes
       when: ansible_os_family == 'Debian'
-    - name: Deploy app
-      docker_container:
-        name: backend
-        image: atread/workflow_testing
-
+    - name: Copy files
+      ansible.builtin.copy:
+        src: /home/andrey/BotParser/docker-compose-deploy.yaml
+        dest: /home/user1/docker-compose-deploy.yaml
+    - name: Deploy
+      ansible.builtin.shell:
+        docker-compose -f docker-compose-deploy.yaml up -d
