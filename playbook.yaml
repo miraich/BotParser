@@ -8,11 +8,10 @@
         name: docker.io
         state: present
         update_cache: yes
-      when: ansible_os_family == 'Debian'
     - name: Copy files
       ansible.builtin.copy:
-        src: /home/andrey/BotParser/docker-compose-deploy.yaml
-        dest: /home/user1/docker-compose-deploy.yaml
+        src: ~/BotParser/docker-compose-deploy.yaml
+        dest: ~/docker-compose-deploy.yaml
     - name: Deploy
       ansible.builtin.shell:
         docker-compose -f docker-compose-deploy.yaml up -d

@@ -49,6 +49,8 @@ jobs:
     needs: build_and_push
     runs-on: ubuntu-22.04
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Copy key
         run: |
           mkdir -p ~/.ssh
@@ -57,19 +59,12 @@ jobs:
           chmod 600 ~/.ssh/known_hosts
           chmod 600 ~/.ssh/id_rsa
           ssh-keygen -y -f ~/.ssh/id_rsa
+
       - name: Checkout
         uses: actions/checkout@v4
       - name: Run Install Ansible
         run: sudo apt install ansible -y
       - name: Run Ansible
         run: ansible-playbook -i .ansible_inventory playbook.yaml
-#      - name: Checkout
-#        uses: actions/checkout@v4
-#      - name: Run playbook
-#        uses: dawidd6/action-ansible-playbook@v3
-#        with:
-#          directory: ./
-#          playbook: 'playbook.yaml'
-#          inventory: '.ansible_inventory'
-#          key: ${{secrets.SSH_PRIVATE_KEY}}
+
 
