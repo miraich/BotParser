@@ -1,17 +1,21 @@
-- name: Deploy db
+- name: Deploy APP
   hosts: "prod"
   remote_user: "user1"
   become: yes
+  vars:
+    compose_file: "docker-compose-deploy.yaml"
+    project_dir: "/home/user1/bot_parser"
   tasks:
     - name: Install Docker
       ansible.builtin.apt:
         name: docker.io
         state: present
         update_cache: yes
-    - name: Copy files
+    - name: Copy docker-compose file
       ansible.builtin.copy:
-        src: ~/runner/work/BotParser/BotParser/docker-compose-deploy.yaml
-        dest: ~/docker-compose-deploy.yaml
+        src: "{{ compose_file }}"
+        dest: "{{ project_dir }}/{{ compose_file }}"
+        mode: '0644'
     - name: Deploy
       ansible.builtin.shell:
         docker-compose -f docker-compose-deploy.yaml up -d

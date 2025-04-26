@@ -59,11 +59,10 @@ jobs:
           chmod 600 ~/.ssh/known_hosts
           chmod 600 ~/.ssh/id_rsa
           ssh-keygen -y -f ~/.ssh/id_rsa
-
       - name: Checkout
         uses: actions/checkout@v4
       - name: Run Install Ansible
-        run: sudo apt install ansible -y
+        run: sudo apt update && sudo apt install -y ansible
       - name: Run Ansible
         run: ansible-playbook -i .ansible_inventory playbook.yaml
 
