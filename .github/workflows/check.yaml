@@ -55,4 +55,5 @@ jobs:
         uses: dawidd6/action-ansible-playbook@v3
         with:
           playbook: 'playbook.yaml'
+          inventory: 'inventory'
 
