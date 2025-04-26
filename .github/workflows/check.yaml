@@ -51,11 +51,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Run playbook
-        uses: dawidd6/action-ansible-playbook@v3
-        with:
-          directory: ./
-          playbook: 'playbook.yaml'
-          inventory: '.ansible_inventory'
-          key: ${{secrets.SSH_PRIVATE_KEY}}
+      - name: Run Install Ansible
+        run: apt install ansible -y
+      - name: Run Ansible
+        run: ansible-playbook -i .ansible_inventory playbook.yaml
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#      - name: Run playbook
+#        uses: dawidd6/action-ansible-playbook@v3
+#        with:
+#          directory: ./
+#          playbook: 'playbook.yaml'
+#          inventory: '.ansible_inventory'
+#          key: ${{secrets.SSH_PRIVATE_KEY}}
 
