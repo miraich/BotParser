@@ -11,6 +11,9 @@
         name: docker.io
         state: present
         update_cache: yes
+    - name: Create Dir
+      ansible.builtin.shell:
+        mkdir bot_parser
     - name: Copy docker-compose file
       ansible.builtin.copy:
         src: "{{ compose_file }}"
