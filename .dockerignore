@@ -4,5 +4,5 @@ target
 .gitignore
 .git
 playbook.yaml
-inventory
+.ansible_inventory
 .github
