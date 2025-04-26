@@ -25,4 +25,4 @@
         mode: '0644'
     - name: Deploy
       ansible.builtin.shell:
-        docker-compose -f docker-compose-deploy.yaml up -d
+        docker-compose -f ./bot_parser/docker-compose-deploy.yaml up -d
