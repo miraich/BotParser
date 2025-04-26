@@ -10,7 +10,7 @@
         update_cache: yes
     - name: Copy files
       ansible.builtin.copy:
-        src: ~/BotParser/docker-compose-deploy.yaml
+        src: ~/runner/work/BotParser/BotParser/docker-compose-deploy.yaml
         dest: ~/docker-compose-deploy.yaml
     - name: Deploy
       ansible.builtin.shell:
