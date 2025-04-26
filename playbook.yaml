@@ -12,8 +12,12 @@
         state: present
         update_cache: yes
     - name: Create Dir
-      ansible.builtin.shell:
-        mkdir bot_parser
+      ansible.builtin.file:
+        path: "/home/user1/bot_parser"  # Всегда используйте абсолютный путь!
+        state: directory
+        mode: '0755'                    # Права (опционально)
+        owner: user1                    # Владелец (опционально)
+        group: user1                    # Группа (опционально)
     - name: Copy docker-compose file
       ansible.builtin.copy:
         src: "{{ compose_file }}"
