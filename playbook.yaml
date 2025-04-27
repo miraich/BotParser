@@ -18,10 +18,15 @@
         mode: '0755'
         owner: user1
         group: user1
-    - name: Set env
-      run: |
-        TG_BOT_TOKEN=${{ secrets.TG_BOT_TOKEN }}
-        TG_BOT_NAME=${{ vars.TG_BOT_NAME }}
+    - name: Set remote env variables
+      ansible.builtin.lineinfile:
+        path: /etc/environment
+        line: "{{ item.key }}={{ item.value }}"
+        state: present
+      loop:
+        - { key: "TG_BOT_TOKEN", value: "{{ lookup('env', 'TG_BOT_TOKEN') }}" }
+        - { key: "TG_BOT_NAME", value: "{{ lookup('env', 'TG_BOT_NAME') }}" }
+      no_log: true
     - name: Copy docker-compose file
       ansible.builtin.copy:
         src: "{{ compose_file }}"

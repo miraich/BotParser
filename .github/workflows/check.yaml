@@ -64,6 +64,9 @@ jobs:
       - name: Run Install Ansible
         run: sudo apt update && sudo apt install -y ansible
       - name: Run Ansible
+        env:
+          TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TG_BOT_NAME: ${{ vars.TG_BOT_NAME }}
         run: ansible-playbook -i .ansible_inventory playbook.yaml
 
 
