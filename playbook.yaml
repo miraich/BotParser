@@ -13,11 +13,15 @@
         update_cache: yes
     - name: Create Dir
       ansible.builtin.file:
-        path: "/home/user1/bot_parser"  # Всегда используйте абсолютный путь!
+        path: "/home/user1/bot_parser"
         state: directory
-        mode: '0755'                    # Права (опционально)
-        owner: user1                    # Владелец (опционально)
-        group: user1                    # Группа (опционально)
+        mode: '0755'
+        owner: user1
+        group: user1
+    - name: Set env
+      run: |
+        TG_BOT_TOKEN=${{ secrets.TG_BOT_TOKEN }}
+        TG_BOT_NAME=${{ vars.TG_BOT_NAME }}
     - name: Copy docker-compose file
       ansible.builtin.copy:
         src: "{{ compose_file }}"

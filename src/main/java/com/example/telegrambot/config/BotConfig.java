@@ -12,8 +12,6 @@ import org.springframework.context.annotation.PropertySource;
 @ComponentScan(basePackages = "com.example.telegrambot")
 @PropertySource("classpath:application.properties")
 public class BotConfig {
-    @Value("${bot.name}")
-    String botName;
-    @Value("${bot.token}")
-    String token;
+    String botName = System.getenv("TG_BOT_NAME");
+    String token = System.getenv("TG_BOT_TOKEN");
 }
