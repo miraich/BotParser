@@ -16,6 +16,9 @@ services:
 
   backend_parser:
     image: atread/workflow_testing
+    environment:
+      TG_BOT_TOKEN: "${TG_BOT_TOKEN}"
+      TG_BOT_NAME: "${TG_BOT_NAME}"
 #    ports:
 #      - 8080:8080
     healthcheck:
