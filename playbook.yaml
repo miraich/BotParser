@@ -29,7 +29,7 @@
       no_log: true
     - name: Test variable access
       ansible.builtin.shell: |
-        source /etc/environment
+        . /etc/environment
     - name: Copy docker-compose file
       ansible.builtin.copy:
         src: "{{ compose_file }}"
