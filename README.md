@@ -8,4 +8,4 @@ change_item_price - Фильтр по цене товара
 main - Получить список категорий для парсинга
 stop - Остановить вывод товаров
 ```
-Создайте файл application.properties на основе application-example.properties, впишите ваш ключ бота в этот файл.
+Необходимо задать TG_BOT_TOKEN и TG_BOT_NAME в качестве переменных окружения на хосте.
