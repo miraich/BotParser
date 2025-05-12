@@ -6,6 +6,7 @@ import com.example.telegrambot.model.Item;
 import com.example.telegrambot.model.ItemCategoryUrl;
 import com.example.telegrambot.repository.ItemRepository;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -17,20 +18,16 @@ import org.telegram.telegrambots.meta.api.objects.InputFile;
 
 
 @Data
+@RequiredArgsConstructor
 @Service
 public class Parser {
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
     private final Categories categories;
     private int page = 1;
     private int allPages;
     private ItemCategoryUrl itemCategoryUrl;
     private TelegramBot bot;
-    public Item currentItem;
-
-    public Parser(Categories categories, ItemRepository itemRepository) {
-        this.itemRepository = itemRepository;
-        this.categories = categories;
-    }
+    private Item currentItem;
 
     private void parseOnePage(String userInput, Long chatId) {
         itemCategoryUrl = categories.getItemCategories().get(userInput);
@@ -82,7 +79,7 @@ public class Parser {
                 saveResultToDB(currentItem);
                 sendItemToUser(currentItem, chatId);
             }
-        } catch (Exception e) {
+        } catch (Exception e) {// разделить исключения
             String answer = "Сайт не отвечает, попробуйте заново.";
             SendMessage sendMessage = new SendMessage();
             sendMessage.setChatId(String.valueOf(chatId));

@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Data
 @Component
 public class Categories {
-    ConcurrentHashMap<String, ItemCategoryUrl> itemCategories = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, ItemCategoryUrl> itemCategories = new ConcurrentHashMap<>();
     public static ConcurrentHashMap<Long, UserSettings> userSettingsMap = new ConcurrentHashMap<>();
 
     public Categories() {
