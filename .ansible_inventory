@@ -1,2 +1,2 @@
 [prod]
-89.232.177.88 ansible_connection=ssh ansible_user=user1
+87.242.102.100 ansible_connection=ssh ansible_user=user1
