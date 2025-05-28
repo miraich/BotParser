@@ -11,6 +11,11 @@
         name: docker.io
         state: present
         update_cache: yes
+    - name: Install docker-compose
+      ansible.builtin.apt:
+        name: docker-compose
+        state: present
+        update_cache: yes
     - name: Create Dir
       ansible.builtin.file:
         path: "/home/user1/bot_parser"
