@@ -29,7 +29,8 @@ stop - Остановить вывод товаров
 
 Пример результата парсинга товара - 
 <br>
-<img width="446" height="539" alt="изображение" src="https://github.com/user-attachments/assets/fc04f2ad-d026-45e0-a7f1-797f98c34bcb" />
+<img width="437" height="458" alt="изображение" src="https://github.com/user-attachments/assets/9e967c52-955d-4c25-beda-d5e5630a335b" />
+
 <br>
 
 
