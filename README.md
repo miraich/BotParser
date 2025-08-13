@@ -16,6 +16,7 @@ stop - Остановить вывод товаров
 Команды - 
 <br>
 <img width="441" height="176" alt="изображение" src="https://github.com/user-attachments/assets/0b46f25d-471c-42e1-b139-e6539cb3d948" />
+<br>
 
 Приветственное сообщение - 
 <br>
@@ -24,11 +25,12 @@ stop - Остановить вывод товаров
 Категории парсинга - 
 <br>
 <img width="390" height="774" alt="изображение" src="https://github.com/user-attachments/assets/d4175c2a-a9e6-4b3d-aa78-5d6b018bdccb" />
+<br>
 
 Пример результата парсинга товара - 
 <br>
 <img width="446" height="539" alt="изображение" src="https://github.com/user-attachments/assets/fc04f2ad-d026-45e0-a7f1-797f98c34bcb" />
-
+<br>
 
 
 
